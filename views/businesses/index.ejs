@@ -17,7 +17,9 @@
 			<% allBusinesses.forEach(business => { %>
 			<li>
 				<h2>
-					<%= business.name %>
+					<a href="/businesses/<%= business._id %>">
+						<%= business.name %>
+					</a>
           <% if (business.isVerified) { %>
             ✅ 
           <% } %>

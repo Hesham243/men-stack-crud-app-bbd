@@ -24,4 +24,10 @@ router.post('/', async (req, res) => {
   res.redirect('/businesses/')
 })
 
+
+router.get('/:businessId', async (req, res) => {
+  const foundBusiness = await Business.findById(req.params.businessId)
+  res.render('businesses/show.ejs', {foundBusiness: foundBusiness})
+})
+
 module.exports = router
