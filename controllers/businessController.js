@@ -1,6 +1,12 @@
 const express = require('express')
 const router = express.Router()
 const Business = require('../models/business')
+// everything in this file has /businesses front
+
+router.get('/', async (req, res) => {
+  const allBusinesses = await Business.find()
+  res.render('businesses/index.ejs', {allBusinesses: allBusinesses})
+})
 
 
 router.get('/new', (req, res) => {
@@ -14,9 +20,8 @@ router.post('/', async (req, res) => {
   }else {
     req.body.isVerified = false
   }
-  console.log(req.body)
   await Business.create(req.body)
-  res.redirect('/businesses/new')
+  res.redirect('/businesses/')
 })
 
 module.exports = router

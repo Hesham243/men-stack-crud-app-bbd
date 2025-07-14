@@ -16,7 +16,7 @@ const businessController = require('./controllers/businessController')
 
 
 // MIDDLEWARE
-app.use(express.static(path.join(__dirname, "public")))
+app.use(express.static(path.join(__dirname, "public"))) // This is important when we want to deploy our project
 app.use(express.urlencoded({ extended: false }))
 
 // GET / (home)
