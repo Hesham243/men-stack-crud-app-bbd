@@ -3,6 +3,8 @@ const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
 const path = require('path')
+const methodOverride = require("method-override"); // new
+const morgan = require("morgan"); //new
 
 // DATABASE CONNECTION
 mongoose.connect(process.env.MONGODB_URI)
