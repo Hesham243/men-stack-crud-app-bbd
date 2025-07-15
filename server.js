@@ -3,18 +3,16 @@ const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
 const path = require('path')
-const methodOverride = require("method-override"); // new
-const morgan = require("morgan"); //new
+const methodOverride = require("method-override")
+const morgan = require("morgan")
+const businessController = require('./controllers/businessController') // CONTROLLER
+
 
 // DATABASE CONNECTION
 mongoose.connect(process.env.MONGODB_URI)
 mongoose.connection.on('connected', ()=> {
   console.log(`Connected to MongoDB ${mongoose.connection.name}`)
 })
-
-
-// CONTROLLER
-const businessController = require('./controllers/businessController')
 
 
 // MIDDLEWARE
@@ -28,6 +26,7 @@ app.use(morgan('dev'))
 app.get('/', (req, res) => {
   res.render('index.ejs', {})
 })
+
 
 app.use('/businesses', businessController)
 
