@@ -30,4 +30,10 @@ router.get('/:businessId', async (req, res) => {
   res.render('businesses/show.ejs', {foundBusiness: foundBusiness})
 })
 
+
+router.delete('/:businessId', async (req, res) => {
+  await Business.findByIdAndDelete(req.params.businessId)
+  res.redirect('/businesses')
+})
+
 module.exports = router
